@@ -1,0 +1,35 @@
+@import "src/scss/styles.scss";
+
+.wrapper {
+  @include padding-top-leftRight-bottom(80px, 110px, 104px);
+
+  & > .section {
+    @extend %flex-row;
+
+    & > header {
+      @extend %flex-column;
+
+      & > h1,
+      & > h3 {
+        font-weight: 300;
+      }
+
+      & > h1 {
+        margin-bottom: pxToRem(12px);
+      }
+    }
+
+    & > .filterWrapper {
+      margin-left: auto;
+      margin-top: pxToRem(24px);
+
+      & > .filterByCategory {
+        background-color: white;
+        width: pxToRem(400px);
+        height: pxToRem(57px);
+        font-size: pxToRem(16px);
+        @include padding-top-right-bottom-left(2px, 32px, 1px, 20px);
+      }
+    }
+  }
+}
