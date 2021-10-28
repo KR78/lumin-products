@@ -1,8 +1,8 @@
 @import "src/scss/styles.scss";
 
 .wrapper {
-  @include padding-top-leftRight-bottom(8px, 40px, 8px);
   @extend %flex-row;
+  @include padding-top-leftRight-bottom(8px, 40px, 8px);
   margin-bottom: pxToRem(42px);
   box-shadow: 0 pxToRem(2px) pxToRem(3px) pxToRem(-3px) $grey;
 
@@ -26,8 +26,29 @@
   }
 
   .topRightMenu {
+    width: pxToRem(225px);
     margin-left: auto;
     margin-right: pxToRem(16px);
     @extend %flex-row-align-center;
+    @extend %justify-content-space-evenly;
+
+    .accountLink {
+      margin-right: pxToRem(16px);
+    }
+
+    .cart {
+      @extend %flex-row;
+
+      .cartIcon {
+        top: pxToRem(5px);
+        position: relative;
+      }
+      .cartItemsCount {
+        @include font(13px, $weight-light, $black);
+        position: relative;
+        right: pxToRem(8px);
+        top: pxToRem(4px);
+      }
+    }
   }
 }
