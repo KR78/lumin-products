@@ -1,0 +1,23 @@
+@import "src/scss/styles.scss";
+
+.wrapper {
+  @include padding-top-leftRight-bottom(8px, 40px, 8px);
+  @extend %flex-row;
+  margin-bottom: pxToRem(42px);
+  box-shadow: 0 pxToRem(2px) pxToRem(3px) pxToRem(-3px) $grey;
+
+  .navLinks {
+    @extend %flex-row;
+    list-style: none;
+
+    .linkItem:first-of-type {
+      margin-left: pxToRem(49px);
+    }
+
+    .linkItem {
+      cursor: pointer;
+      margin-right: pxToRem(52px);
+      @include font(14px, $weight-light, $black);
+    }
+  }
+}
