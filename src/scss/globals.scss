@@ -43,6 +43,12 @@ p {
 }
 
 body {
+  margin: 0;
   background-color: $desert-storm;
   min-height: $body-height;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
 }
