@@ -1,0 +1,9 @@
+@import "src/scss/styles.scss";
+
+.wrapper {
+  height: pxToRem(32px);
+  border: 1px solid #cdd1ce;
+  background: inherit;
+  outline: none;
+  @include font(13px, 300, $black);
+}
