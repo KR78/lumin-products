@@ -15,6 +15,7 @@ const Select = ({
     {
       options.map((option) => (
         <option
+          key={option.label}
           value={option.value}
           selected={option.selected}
           disabled={option.disabled}
