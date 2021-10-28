@@ -1,5 +1,6 @@
 import React from 'react';
 import Main from '../Main';
+import NavBar from '../NavBar';
 
 interface AuthorizedProps {
   children: React.ReactNode
@@ -8,9 +9,12 @@ interface AuthorizedProps {
 const Authorized = ({
   children,
 }: AuthorizedProps) => (
-  <Main>
-    {children}
-  </Main>
+  <>
+    <NavBar />
+    <Main>
+      {children}
+    </Main>
+  </>
 );
 
 export default Authorized;
