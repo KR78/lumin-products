@@ -1,6 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
-import CartSVG from 'src/components/common/SVGs';
+import { CartSVG } from 'src/components/common/SVG/CartSVG';
 import Select from 'src/components/common/Select';
 import siteLanguages from 'src/helpers/siteLanguages';
 import {
