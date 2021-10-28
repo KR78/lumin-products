@@ -1,0 +1,6 @@
+@import "src/scss/styles.scss";
+
+.wrapper {
+  background-color: $grey-nurse;
+  @include leftRight(62.500px);
+}
