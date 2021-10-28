@@ -1,4 +1,6 @@
-const languages = [
+import { SelectOptions } from 'src/types';
+
+const languages: SelectOptions = [
   {
     label: 'AR',
     value: 'ar',
@@ -9,6 +11,7 @@ const languages = [
   },
   {
     label: 'EN',
+    selected: true,
     value: 'en',
   },
   {

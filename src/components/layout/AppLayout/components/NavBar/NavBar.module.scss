@@ -3,7 +3,6 @@
 .wrapper {
   @extend %flex-row;
   @include padding-top-leftRight-bottom(8px, 40px, 8px);
-  margin-bottom: pxToRem(42px);
   box-shadow: 0 pxToRem(2px) pxToRem(3px) pxToRem(-3px) $grey;
 
   .navLinks {
