@@ -17,7 +17,17 @@
     .linkItem {
       cursor: pointer;
       margin-right: pxToRem(52px);
-      @include font(14px, $weight-light, $black);
     }
+  }
+
+  .navLinks .linkItem,
+  .topRightMenu .accountLink {
+    @include font(14px, $weight-light, $black);
+  }
+
+  .topRightMenu {
+    margin-left: auto;
+    margin-right: pxToRem(16px);
+    @extend %flex-row-align-center;
   }
 }

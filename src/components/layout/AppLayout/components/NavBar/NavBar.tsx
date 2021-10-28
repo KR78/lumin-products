@@ -1,6 +1,9 @@
 import React from 'react';
 import Link from 'next/link';
-import { getPathList } from 'src/helpers/paths';
+import {
+  PATH_MAP,
+  getPathList,
+} from 'src/helpers/paths';
 import style from './NavBar.module.scss';
 
 const NavBar = () => (
@@ -24,6 +27,11 @@ const NavBar = () => (
         ))
       }
     </ul>
+    <div className={style.topRightMenu}>
+      <Link href={PATH_MAP.account.href}>
+        <a className={style.accountLink}>{PATH_MAP.account.label}</a>
+      </Link>
+    </div>
   </nav>
 );
 

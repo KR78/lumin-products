@@ -30,6 +30,11 @@ export const PATH_MAP: { [key: string]: Path } = {
     href: '/blog',
     label: 'Blog',
   },
+  account: {
+    key: 'account',
+    href: '/account',
+    label: 'Account',
+  },
 };
 
 export const getPathList = () => [
