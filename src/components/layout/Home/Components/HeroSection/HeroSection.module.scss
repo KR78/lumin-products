@@ -24,7 +24,7 @@
       margin-top: pxToRem(24px);
 
       & > .filterByCategory {
-        background-color: white;
+        background-color: $white;
         width: pxToRem(400px);
         height: pxToRem(57px);
         font-size: pxToRem(16px);
