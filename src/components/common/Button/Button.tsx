@@ -8,7 +8,8 @@ interface ButtonProps {
   unStyled?: boolean
   disabled?: boolean
   loading?: boolean
-  children: React.ReactNode
+  ariaLabel?: string
+  children?: React.ReactNode
   onClick: Function
 }
 
@@ -20,6 +21,7 @@ const Button = ({
   children,
   onClick,
   disabled,
+  ariaLabel,
 }: ButtonProps) => {
   const buttonClassName = () => {
     let c = '';
@@ -37,6 +39,7 @@ const Button = ({
 
   return (
     <button
+      aria-label={ariaLabel}
       type={type}
       onClick={(e) => {
         if (onClick) {
@@ -53,10 +56,12 @@ const Button = ({
 
 Button.defaultProps = {
   className: '',
+  ariaLabel: '',
   type: 'button',
   unStyled: true,
   disabled: false,
   loading: false,
+  children: null,
 };
 
 export default Button;
