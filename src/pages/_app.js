@@ -1,8 +1,18 @@
 /* eslint-disable */
 import React from 'react';
 import Head from 'next/head';
+import {
+  ApolloProvider,
+  ApolloClient,
+  InMemoryCache,
+} from '@apollo/client';
 import Layout from '../components/layout/AppLayout';
 import '../scss/globals.scss';
+
+const client = new ApolloClient({
+  uri: ' https://pangaea-interviews.now.sh/api/graphql',
+  cache: new InMemoryCache(),
+});
 
 const App = ({
   Component,
@@ -17,7 +27,9 @@ const App = ({
       <meta name="viewport" content="width=device-width, initial-scale=1" />
     </Head>
     <Layout>
-      <Component {...pageProps} />
+      <ApolloProvider client={client}>
+        <Component {...pageProps} />
+      </ApolloProvider>
     </Layout>
   </>
 );

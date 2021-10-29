@@ -5,44 +5,44 @@
   @include padding-top-leftRight-bottom(8px, 40px, 8px);
   box-shadow: 0 pxToRem(2px) pxToRem(3px) pxToRem(-3px) $grey;
 
-  .navLinks {
+  & > .navLinks {
     @extend %flex-row;
     list-style: none;
 
-    .linkItem:first-of-type {
+    & > .linkItem:first-of-type {
       margin-left: pxToRem(49px);
     }
 
-    .linkItem {
+    & > .linkItem {
       cursor: pointer;
       margin-right: pxToRem(52px);
     }
   }
 
-  .navLinks .linkItem,
-  .topRightMenu .accountLink {
+  & > .navLinks & > .linkItem,
+  & > .topRightMenu & > .accountLink {
     @include font(14px, $weight-light, $black);
   }
 
-  .topRightMenu {
+  & > .topRightMenu {
     width: pxToRem(225px);
     margin-left: auto;
     margin-right: pxToRem(16px);
     @extend %flex-row-align-center;
     @extend %justify-content-space-evenly;
 
-    .accountLink {
+    & > .accountLink {
       margin-right: pxToRem(16px);
     }
 
-    .cart {
+    & > .cart {
       @extend %flex-row;
 
-      .cartIcon {
+      & > .cartIcon {
         top: pxToRem(5px);
         position: relative;
       }
-      .cartItemsCount {
+      & > .cartItemsCount {
         @include font(13px, $weight-light, $black);
         position: relative;
         right: pxToRem(8px);

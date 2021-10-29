@@ -20,6 +20,12 @@
   padding: pxToRem($top) pxToRem($leftRight) pxToRem($bottom);
 }
 
+@mixin leftRight(
+  $leftRight: 0px,
+) {
+  padding: 0 pxToRem($leftRight);
+}
+
 @mixin padding-top-right-bottom-left(
   $top: 0px,
   $right: 0px,
