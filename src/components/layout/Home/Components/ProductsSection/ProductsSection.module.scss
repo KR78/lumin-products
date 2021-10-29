@@ -2,5 +2,24 @@
 
 .wrapper {
   background-color: $grey-nurse;
-  @include leftRight(62.500px);
+  min-height: 100vh;
+  @include leftRight(62.5px);
+
+  & > .section {
+    @extend %flex-row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+
+  @media only screen and (min-width: 768px) {
+    & > .section > * {
+      width: 23%;
+    }
+  }
+
+  @media only screen and (max-width: 768px) {
+    & > .section > * {
+      width: 30%;
+    }
+  }
 }
