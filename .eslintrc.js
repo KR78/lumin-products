@@ -40,6 +40,7 @@ module.exports = {
     '@typescript-eslint',
   ],
   rules: {
+    'no-shadow': 'off',
     '@typescript-eslint/ban-types': 'off',
     '@typescript-eslint/no-explicit-any': 'off',
     'no-empty-function': 'off',
