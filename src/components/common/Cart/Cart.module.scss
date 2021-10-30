@@ -14,7 +14,18 @@
 
     & > .header {
       @include font(17px, 300, $black);
+      margin-bottom: pxToRem(17px);
       @include padding-top-leftRight-bottom(21px, 167px, 0px);
+    }
+
+    & > .cartTopActions {
+      @extend %flex-row;
+      padding: 0 pxToRem(30px);
+
+      & > .currencySelect {
+        margin-left: auto;
+        border: none;
+      }
     }
   }
 
@@ -30,5 +41,5 @@
 }
 
 .show {
-  display: flex;
+  @extend %flex-row;
 }
