@@ -1,6 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
-import { CartSVG } from 'src/components/common/SVG/CartSVG';
+import { Cart } from 'src/components/common/SVG/Cart';
 import Select from 'src/components/common/Select';
 import Button from 'src/components/common/Button';
 import siteLanguages from 'src/helpers/siteLanguages';
@@ -17,6 +17,7 @@ const NavBar = () => {
   const {
     isCartOpen,
     setIsCartOpen,
+    cartItemsCount,
   } = cartData;
 
   return (
@@ -49,13 +50,13 @@ const NavBar = () => {
             onClick={() => setIsCartOpen(!isCartOpen)}
           >
             {
-              CartSVG({
+              Cart({
                 size: 35,
                 className: style.cartIcon,
               })
             }
           </Button>
-          <span className={style.cartItemsCount}>1</span>
+          <span className={style.cartItemsCount}>{cartItemsCount}</span>
         </div>
         <Select options={siteLanguages} />
       </div>
