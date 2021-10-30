@@ -1,12 +1,10 @@
 import React from 'react';
+import { Product } from 'src/types';
 import Button from 'src/components/common/Button';
 import style from './ProductCard.module.scss';
 
-interface ProductCardProps {
-  id: number,
-  title: string,
-  imageUrl: string,
-  price: number
+interface ProductCardProps extends Product {
+  addToCart(v: Product): void
 }
 
 const ProductCard = ({
@@ -14,6 +12,7 @@ const ProductCard = ({
   title,
   imageUrl,
   price,
+  addToCart,
 }: ProductCardProps) => (
   <article
     key={id}
@@ -26,10 +25,25 @@ const ProductCard = ({
         alt={title}
       />
       <span className={style.productTitle}>{title}</span>
-      <span className={style.productPrice}>{price}</span>
+      <span className={style.productPrice}>
+        {`$ ${price
+          .toLocaleString(
+            undefined,
+            {
+              maximumFractionDigits: 2,
+              minimumFractionDigits: 2,
+            },
+          )
+        }`}
+      </span>
       <Button
         className={style.addToCart}
-        onClick={() => null}
+        onClick={() => addToCart({
+          id,
+          title,
+          imageUrl,
+          price,
+        })}
       >
         Add to Cart
       </Button>
