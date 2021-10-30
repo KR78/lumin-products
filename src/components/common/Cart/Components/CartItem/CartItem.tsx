@@ -5,6 +5,7 @@ import AddToCart from '../AddToCart';
 import style from './CartItem.module.scss';
 
 interface CartItemProps extends Product {
+  selectedCurrency: string,
   addProductToCart(v: Product): void
   removeProductFromCart(v: number): void
   deleteProductFromCart(v: number): void
@@ -16,6 +17,7 @@ const CartItem = ({
   price,
   imageUrl,
   quantity,
+  selectedCurrency,
   addProductToCart,
   removeProductFromCart,
   deleteProductFromCart,
@@ -45,7 +47,7 @@ const CartItem = ({
           removeProductFromCart={removeProductFromCart}
         />
         <span className={style.price}>
-          {`$ ${price
+          {`${selectedCurrency} ${price
             .toLocaleString(
               undefined,
               {

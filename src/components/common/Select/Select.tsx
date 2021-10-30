@@ -5,13 +5,18 @@ import style from './Select.module.scss';
 interface SelectProps {
   options: SelectOptions
   className?: string
+  onChange?(v: string): void
 }
 
 const Select = ({
   options,
+  onChange,
   className,
 }: SelectProps) => (
-  <select className={`${style.wrapper} ${className}`}>
+  <select
+    className={`${style.wrapper} ${className}`}
+    onChange={(e) => onChange(e?.target?.value)}
+  >
     {
       options.map((option) => (
         <option
@@ -29,6 +34,7 @@ const Select = ({
 
 Select.defaultProps = {
   className: '',
+  onChange: () => null,
 };
 
 export default Select;

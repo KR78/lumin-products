@@ -1,23 +1,33 @@
 import React from 'react';
-import Cart from 'src/components/common/Cart';
+import {
+  ApolloProvider,
+  ApolloClient,
+  InMemoryCache,
+} from '@apollo/client';
 import CartProvider from 'src/components/providers/cartProvider';
 import Main from '../Main';
 import NavBar from '../NavBar';
 
-interface AuthorizedProps {
+interface LayoutWrapperProps {
   children: React.ReactNode
 }
 
-const Authorized = ({
+const client = new ApolloClient({
+  uri: ' https://pangaea-interviews.now.sh/api/graphql',
+  cache: new InMemoryCache(),
+});
+
+const LayoutWrapper = ({
   children,
-}: AuthorizedProps) => (
-  <CartProvider>
-    <NavBar />
-    <Main>
-      {children}
-    </Main>
-    <Cart />
-  </CartProvider>
+}: LayoutWrapperProps) => (
+  <ApolloProvider client={client}>
+    <CartProvider>
+      <NavBar />
+      <Main>
+        {children}
+      </Main>
+    </CartProvider>
+  </ApolloProvider>
 );
 
-export default Authorized;
+export default LayoutWrapper;
