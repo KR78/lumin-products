@@ -4,6 +4,7 @@ import { Cart } from 'src/components/common/SVG/Cart';
 import Select from 'src/components/common/Select';
 import Button from 'src/components/common/Button';
 import siteLanguages from 'src/helpers/siteLanguages';
+import { Hamburger } from 'src/components/common/SVG/Hamburger';
 import { useCartProvider } from 'src/components/providers/cartProvider';
 import {
   PATH_MAP,
@@ -22,12 +23,21 @@ const NavBar = () => {
 
   return (
     <nav className={style.wrapper} role="navigation" aria-label="main navigation">
-      <div>
+      <div className={style.logo}>
         <Link href="/">
           <a>
             <img src="/logo.png" alt="Lumin Logo" />
           </a>
         </Link>
+      </div>
+      <div className={style.hamburger}>
+        <Button
+          onClick={() => null}
+        >
+          <Hamburger
+            size={15}
+          />
+        </Button>
       </div>
       <ul className={style.navLinks}>
         {
@@ -58,7 +68,10 @@ const NavBar = () => {
           </Button>
           <span className={style.cartItemsCount}>{cartItemsCount}</span>
         </div>
-        <Select options={siteLanguages} />
+        <Select
+          className={style.select}
+          options={siteLanguages}
+        />
       </div>
     </nav>
   );

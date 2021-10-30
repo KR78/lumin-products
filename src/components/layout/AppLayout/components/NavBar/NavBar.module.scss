@@ -5,6 +5,10 @@
   @include padding-top-leftRight-bottom(8px, 40px, 8px);
   box-shadow: 0 pxToRem(2px) pxToRem(3px) pxToRem(-3px) $grey;
 
+  & > .hamburger {
+    display: none;
+  }
+
   & > .navLinks {
     @extend %flex-row;
     list-style: none;
@@ -47,6 +51,38 @@
         position: relative;
         right: pxToRem(8px);
         top: pxToRem(4px);
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 855px) {
+  .wrapper {
+    @include padding-top-leftRight-bottom(8px, 20px, 0px);
+
+    & > .hamburger {
+      display: flex;
+    }
+
+    & > .logo {
+      display: none;
+    }
+
+    & > .navLinks {
+      display: none;
+    }
+
+    & > .navLinks & > .linkItem,
+    & > .topRightMenu .accountLink {
+      @include font(14px, $weight-light, $black);
+    }
+
+    & > .topRightMenu {
+      margin-right: 0;
+
+      & > .select {
+        width: 100%;
+        @include font(12px, $weight-light, $black);
       }
     }
   }
