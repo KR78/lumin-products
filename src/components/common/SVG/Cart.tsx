@@ -1,7 +1,7 @@
 import React from 'react';
 import { SVGIcon } from 'src/types';
 
-export const CartSVG = ({
+export const Cart = ({
   size = 24,
   className = '',
 }: SVGIcon) => (
