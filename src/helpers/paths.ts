@@ -12,27 +12,27 @@ export const PATH_MAP: { [key: string]: Path } = {
   },
   shop: {
     key: 'shop',
-    href: '/shop',
+    href: '/#',
     label: 'Shop',
   },
   about: {
     key: 'about',
-    href: '/about',
+    href: '/#',
     label: 'About',
   },
   support: {
     key: 'support',
-    href: '/support',
+    href: '/#',
     label: 'Support',
   },
   blog: {
     key: 'blog',
-    href: '/blog',
+    href: '/#',
     label: 'Blog',
   },
   account: {
     key: 'account',
-    href: '/account',
+    href: '/#',
     label: 'Account',
   },
 };

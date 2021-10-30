@@ -21,7 +21,7 @@ const App = ({
         href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap"
         rel="stylesheet"
       />
-      <meta charset="utf-8" />
+      <meta charSet="utf-8" />
       <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"></meta>
       <title>Recreating Product Page (Lumin)</title>
       <meta name="description" content="Recreating Product Page (Lumin)"></meta>
