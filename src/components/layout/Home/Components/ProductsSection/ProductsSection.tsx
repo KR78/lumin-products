@@ -1,7 +1,8 @@
 import React from 'react';
 import { gql, useQuery } from '@apollo/client';
 import { CartContext } from 'src/components/providers/cartProvider';
-import { Product, Products } from 'src/types';
+import { Currency, Product, Products } from 'src/types';
+import getProducts from 'src/service/getProducts';
 import ProductCard from './components/ProductCard';
 import style from './ProductsSection.module.scss';
 
@@ -13,6 +14,7 @@ const ProductsSection = () => {
     isCartOpen,
     setIsCartOpen,
     setCartLoading,
+    selectedCurrency,
     addProductToCart,
   } = cartData;
 
@@ -21,18 +23,7 @@ const ProductsSection = () => {
   const [selectedFilter, setSelectedFilter] = React.useState(null);
   const [products, setProducts] = React.useState<Products>([]);
 
-  const GET_PRODUCTS = gql`
-  query GetProducts {
-    products {
-      id
-      title
-      imageUrl: image_url
-      price(currency: USD)
-    }
-  }
-`;
-
-  const { loading, error, data } = useQuery(GET_PRODUCTS);
+  const { loading, error, data } = getProducts(selectedCurrency);
 
   React.useEffect(() => {
     if (loading) setIsLoading(loading);
@@ -43,10 +34,11 @@ const ProductsSection = () => {
       setIsLoading(false);
     }
   }, [
-    selectedFilter,
-    loading,
     data,
     error,
+    loading,
+    selectedFilter,
+    selectedCurrency,
   ]);
 
   const addToCart = (v: Product) => {
@@ -74,6 +66,7 @@ const ProductsSection = () => {
                       imageUrl={product.imageUrl}
                       price={product.price}
                       addToCart={addToCart}
+                      selectedCurrency={selectedCurrency}
                     />
                   ))
                 }
