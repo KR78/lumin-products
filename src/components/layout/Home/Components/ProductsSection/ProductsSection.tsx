@@ -1,10 +1,22 @@
 import React from 'react';
 import { gql, useQuery } from '@apollo/client';
-import { Products } from 'src/types';
+import { CartContext } from 'src/components/providers/cartProvider';
+import { Product, Products } from 'src/types';
+import addOrRemoveFromList from 'src/helpers/addOrRemoveFromList';
 import ProductCard from './components/ProductCard';
 import style from './ProductsSection.module.scss';
 
 const ProductsSection = () => {
+  const cartData = React.useContext(CartContext);
+
+  const {
+    cart,
+    isCartOpen,
+    setIsCartOpen,
+    setCartLoading,
+    addProductToCart,
+  } = cartData;
+
   const [isLoading, setIsLoading] = React.useState(false);
   const [errorMessage, setErrorMessage] = React.useState(null);
   const [selectedFilter, setSelectedFilter] = React.useState(null);
@@ -38,6 +50,13 @@ const ProductsSection = () => {
     error,
   ]);
 
+  const addToCart = (v: Product) => {
+    setIsCartOpen(!isCartOpen);
+    setCartLoading(true);
+    addProductToCart(v);
+    setCartLoading(false);
+  };
+
   return (
     <article className={style.wrapper}>
       <section className={style.section}>
@@ -55,6 +74,7 @@ const ProductsSection = () => {
                       title={product.title}
                       imageUrl={product.imageUrl}
                       price={product.price}
+                      addToCart={addToCart}
                     />
                   ))
                 }
