@@ -21,6 +21,7 @@ const Cart = () => {
     setIsCartOpen,
     addProductToCart,
     removeProductFromCart,
+    deleteProductFromCart,
   } = cartData;
 
   const currenyOptions = Object.values(Currency)
@@ -60,17 +61,34 @@ const Cart = () => {
             />
           </div>
           {
-            cartItems.map((item) => (
-              <CartItem
-                id={item?.id || 0}
-                quantity={item?.quantity || 0}
-                imageUrl={item?.imageUrl || ''}
-                title={item?.title || ''}
-                price={item?.price || 0}
-                addProductToCart={addProductToCart}
-                removeProductFromCart={removeProductFromCart}
-              />
-            ))
+            cartItems?.length > 1 ? (
+              cartItems.map((item) => (
+                <CartItem
+                  id={item?.id || 0}
+                  quantity={item?.quantity || 0}
+                  imageUrl={item?.imageUrl || ''}
+                  title={item?.title || ''}
+                  price={item?.price || 0}
+                  addProductToCart={addProductToCart}
+                  removeProductFromCart={removeProductFromCart}
+                  deleteProductFromCart={deleteProductFromCart}
+                />
+              ))
+            )
+              : (
+                <article>
+                  <section>
+                    <header>
+                      <span>There are no items in your cart</span>
+                      <Button
+                        onClick={() => null}
+                      >
+                        Get shopping &gt;&gt;
+                      </Button>
+                    </header>
+                  </section>
+                </article>
+              )
           }
         </section>
       </article>
