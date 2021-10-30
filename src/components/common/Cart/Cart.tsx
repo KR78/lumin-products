@@ -1,4 +1,3 @@
-import { string } from 'prop-types';
 import React from 'react';
 import { CartContext } from 'src/components/providers/cartProvider';
 import { Currency } from 'src/types';
@@ -66,7 +65,7 @@ const Cart = () => {
             />
           </div>
           {
-            cartItems?.length > 1 ? (
+            cartItems?.length >= 1 ? (
               cartItems.map((item) => (
                 <CartItem
                   id={item?.id || 0}
