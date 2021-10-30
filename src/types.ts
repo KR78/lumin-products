@@ -21,6 +21,7 @@ export interface Product {
   imageUrl: string,
   price: number,
   quantity?: number,
+  orginalPrice?: number,
 }
 
 export type Products = Product[]
