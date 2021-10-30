@@ -10,13 +10,13 @@ const addItemToCart = (product, state) => {
   );
 
   if (itemToUpdate < 0) {
-    newCart.push({ ...product, quantity: 1 });
+    newCart.push({ ...product, quantity: 1, originalPrice: (product?.price || 0) });
   } else {
     const updatedItem = {
       ...newCart[itemToUpdate],
     };
     updatedItem.quantity++;
-    updatedItem.price *= updatedItem.quantity;
+    updatedItem.price = updatedItem.originalPrice * updatedItem.quantity;
     newCart[itemToUpdate] = updatedItem;
   }
   return { ...state, cart: newCart };
@@ -30,6 +30,7 @@ const removeProductFromCart = (productId, state) => {
     ...newCart[itemToUpdate],
   };
   updatedItem.quantity--;
+  updatedItem.price = updatedItem.originalPrice * updatedItem.quantity;
   if (updatedItem.quantity <= 0) {
     newCart.splice(itemToUpdate, 1);
   } else {
