@@ -2,6 +2,7 @@
 export const ADD_PRODUCT = 'ADD_PRODUCT';
 export const REMOVE_PRODUCT = 'REMOVE_PRODUCT';
 export const DELETE_PRODUCT = 'DELETE_PRODUCT';
+export const UPDATE_CART = 'UPDATE_CART';
 
 const addItemToCart = (product, state) => {
   const newCart = [...state.cart];
@@ -10,7 +11,11 @@ const addItemToCart = (product, state) => {
   );
 
   if (itemToUpdate < 0) {
-    newCart.push({ ...product, quantity: 1, originalPrice: (product?.price || 0) });
+    newCart.push({
+      ...product,
+      quantity: 1,
+      originalPrice: (product?.price || 0),
+    });
   } else {
     const updatedItem = {
       ...newCart[itemToUpdate],
@@ -47,6 +52,14 @@ const deleteProductFromCart = (productId, state) => {
   return { ...state, cart: updatedCart };
 };
 
+const updatCartOnCurrencyChange = (cart, state) => {
+  const newCart = cart;
+  return {
+    ...state,
+    cart: newCart,
+  };
+};
+
 export const shopReducer = (state, action) => {
   switch (action.type) {
     case ADD_PRODUCT:
@@ -55,6 +68,8 @@ export const shopReducer = (state, action) => {
       return removeProductFromCart(action.productId, state);
     case DELETE_PRODUCT:
       return deleteProductFromCart(action.productId, state);
+    case UPDATE_CART:
+      return updatCartOnCurrencyChange(action.cart, state);
     default:
       return state;
   }
