@@ -21,7 +21,11 @@ const App = ({
         href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap"
         rel="stylesheet"
       />
-      <meta name="viewport" content="width=device-width, initial-scale=1" />
+      <meta charset="utf-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"></meta>
+      <title>Product Page Recreation (Lumin)</title>
+      <meta name="description" content="A Product Page Recreation (Lumin)"></meta>
+      <link rel="icon" type="image/png" href="https://lumin-products.vercel.app/favicon.png"></link>
     </Head>
     <Layout>
         <Component {...pageProps} />
