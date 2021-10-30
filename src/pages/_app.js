@@ -23,8 +23,8 @@ const App = ({
       />
       <meta charset="utf-8" />
       <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"></meta>
-      <title>Product Page Recreation (Lumin)</title>
-      <meta name="description" content="A Product Page Recreation (Lumin)"></meta>
+      <title>Recreating Product Page (Lumin)</title>
+      <meta name="description" content="Recreating Product Page (Lumin)"></meta>
       <link rel="icon" type="image/png" href="https://lumin-products.vercel.app/favicon.png"></link>
     </Head>
     <Layout>

@@ -1,4 +1,4 @@
-Lumin
+Recreating Product Page (Lumin)
 
 ### Install and run using npm or yarn
 
