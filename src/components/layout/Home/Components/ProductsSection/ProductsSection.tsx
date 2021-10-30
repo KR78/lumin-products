@@ -2,7 +2,6 @@ import React from 'react';
 import { gql, useQuery } from '@apollo/client';
 import { CartContext } from 'src/components/providers/cartProvider';
 import { Product, Products } from 'src/types';
-import addOrRemoveFromList from 'src/helpers/addOrRemoveFromList';
 import ProductCard from './components/ProductCard';
 import style from './ProductsSection.module.scss';
 

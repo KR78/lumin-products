@@ -31,7 +31,7 @@ const Main = ({ children }: LayoutProps) => {
           />
         )
       }
-    </div >
+    </div>
   );
 };
 
