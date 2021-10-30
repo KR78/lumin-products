@@ -33,3 +33,39 @@
     }
   }
 }
+
+@media only screen and (max-width: 912px) {
+  .wrapper {
+    @include padding-top-leftRight-bottom(64px, 24px, 24px);
+
+    & > .section {
+      flex-direction: column;
+
+      & > header {
+        & > h1,
+        & > h3 {
+          font-weight: 300;
+        }
+
+        & > h1 {
+          margin-bottom: 0;
+          font-size: pxToRem(24px);
+        }
+
+        & > h3 {
+          font-size: pxToRem(14px);
+          margin-top: pxToRem(8px);
+        }
+      }
+
+      & > .filterWrapper {
+        margin: 0;
+
+        & > .filterByCategory {
+          font-size: pxToRem(15px);
+          margin-top: pxToRem(24px);
+        }
+      }
+    }
+  }
+}
