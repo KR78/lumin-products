@@ -34,7 +34,7 @@ const Select = ({
 
 Select.defaultProps = {
   className: '',
-  onChange: (v) => null,
+  onChange: () => null,
 };
 
 export default Select;
