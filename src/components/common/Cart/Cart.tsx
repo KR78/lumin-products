@@ -1,55 +1,40 @@
 import React from 'react';
 import { CartContext } from 'src/components/providers/cartProvider';
-import { Currency } from 'src/types';
+import currenyOptions from 'src/helpers/currencyOptions';
+import { Products } from 'src/types';
 import Button from '../Button';
 import Select from '../Select';
 import { HideCart } from '../SVG/HideCart';
 import style from './Cart.module.scss';
 import CartItem from './Components/CartItem';
 
-const defaultCurrency = 'USD';
+interface CartProps {
+  items: Products,
+  selectedCurrency: string,
+}
 
-const Cart = () => {
+const Cart = ({
+  items,
+  selectedCurrency,
+}: CartProps) => {
   const cartData = React.useContext(CartContext);
-  const [cartItems, setCartItems] = React.useState([]);
 
   const {
-    cart,
-    cartLoading,
     isCartOpen,
     setIsCartOpen,
     addProductToCart,
+    setSelectedCurrency,
     removeProductFromCart,
     deleteProductFromCart,
   } = cartData;
-
-  const currenyOptions = Object.values(Currency)
-    .map((val) => ({
-      label: val,
-      value: val,
-      selected: val === defaultCurrency,
-    } as {
-      label: string,
-      value: string,
-    }))
-    .filter((l) => typeof l.label === 'string');
-
-  React.useEffect(() => {
-    if (!cart) {
-      return;
-    }
-    setCartItems(cart);
-  }, [cartItems, cart]);
 
   const getShopping = () => {
     setIsCartOpen(!isCartOpen);
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
-  return cartLoading
-    && !cartItems
-    ? (<div>Loading...</div>)
-    : (
+  return items
+    && (
       <article className={`${style.wrapper} ${isCartOpen ? style.show : style.hidden}`}>
         <section className={style.cart}>
           <header className={style.header}>My Shopping Cart</header>
@@ -62,23 +47,26 @@ const Cart = () => {
             <Select
               className={style.currencySelect}
               options={currenyOptions}
+              onChange={setSelectedCurrency}
             />
           </div>
           {
-            cartItems?.length >= 1 ? (
-              cartItems.map((item) => (
-                <CartItem
-                  id={item?.id || 0}
-                  quantity={item?.quantity || 0}
-                  imageUrl={item?.imageUrl || ''}
-                  title={item?.title || ''}
-                  price={item?.price || 0}
-                  addProductToCart={addProductToCart}
-                  removeProductFromCart={removeProductFromCart}
-                  deleteProductFromCart={deleteProductFromCart}
-                />
-              ))
-            )
+            items
+              && items?.length >= 1 ? (
+                items.map((item) => (
+                  <CartItem
+                    id={item?.id || 0}
+                    quantity={item?.quantity || 0}
+                    imageUrl={item?.imageUrl || ''}
+                    title={item?.title || ''}
+                    price={item?.price || 0}
+                    selectedCurrency={selectedCurrency}
+                    addProductToCart={addProductToCart}
+                    removeProductFromCart={removeProductFromCart}
+                    deleteProductFromCart={deleteProductFromCart}
+                  />
+                ))
+              )
               : (
                 <article className={style.emptyCartWrapper}>
                   <section>
