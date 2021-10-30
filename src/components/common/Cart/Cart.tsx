@@ -42,6 +42,11 @@ const Cart = () => {
     setCartItems(cart);
   }, [cartItems, cart]);
 
+  const getShopping = () => {
+    setIsCartOpen(!isCartOpen);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   return cartLoading
     && !cartItems
     ? (<div>Loading...</div>)
@@ -76,12 +81,12 @@ const Cart = () => {
               ))
             )
               : (
-                <article>
+                <article className={style.emptyCartWrapper}>
                   <section>
                     <header>
                       <span>There are no items in your cart</span>
                       <Button
-                        onClick={() => null}
+                        onClick={() => getShopping()}
                       >
                         Get shopping &gt;&gt;
                       </Button>

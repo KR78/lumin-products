@@ -27,6 +27,24 @@
         border: none;
       }
     }
+
+    & > .emptyCartWrapper {
+      margin: pxToRem(149px);
+      @extend %flex-column;
+
+      & > section header {
+        @include font(13px, 300, $black);
+        @extend %flex-column-justify-center;
+
+        & > * {
+          margin: pxToRem(4px) 0;
+        }
+
+        & > button {
+          text-decoration: underline;
+        }
+      }
+    }
   }
 
   @media only screen and (max-width: 529px) {
