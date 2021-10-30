@@ -5,6 +5,8 @@ import style from './ProductCard.module.scss';
 
 interface ProductCardProps extends Product {
   addToCart(v: Product): void
+  selectedCurrency: string
+
 }
 
 const ProductCard = ({
@@ -13,6 +15,7 @@ const ProductCard = ({
   imageUrl,
   price,
   addToCart,
+  selectedCurrency,
 }: ProductCardProps) => (
   <article
     key={id}
@@ -26,7 +29,7 @@ const ProductCard = ({
       />
       <span className={style.productTitle}>{title}</span>
       <span className={style.productPrice}>
-        {`$ ${price
+        {`${selectedCurrency} ${price
           .toLocaleString(
             undefined,
             {
