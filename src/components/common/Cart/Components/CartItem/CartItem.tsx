@@ -7,6 +7,7 @@ import style from './CartItem.module.scss';
 interface CartItemProps extends Product {
   addProductToCart(v: Product): void
   removeProductFromCart(v: number): void
+  deleteProductFromCart(v: number): void
 }
 
 const CartItem = ({
@@ -17,14 +18,15 @@ const CartItem = ({
   quantity,
   addProductToCart,
   removeProductFromCart,
+  deleteProductFromCart,
 }: CartItemProps) => (
   <article className={style.wrapper}>
     <section className={style.section}>
       <header>
         <span>{title}</span>
         <RemoveItem
-          className={style.removeItemIcon}
-          onClick={() => removeProductFromCart(id)}
+          className={`${style.removeItemIcon} pointer`}
+          onClick={() => deleteProductFromCart(id)}
           size={12}
         />
       </header>
@@ -51,7 +53,7 @@ const CartItem = ({
                 minimumFractionDigits: 2,
               },
             )
-            }`}
+          }`}
         </span>
       </div>
     </section>

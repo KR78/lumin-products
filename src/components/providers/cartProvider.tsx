@@ -1,6 +1,11 @@
 import React from 'react';
 import { Product, Products } from 'src/types';
-import { shopReducer, ADD_PRODUCT, REMOVE_PRODUCT } from 'src/reducers/cart';
+import {
+  shopReducer,
+  ADD_PRODUCT,
+  REMOVE_PRODUCT,
+  DELETE_PRODUCT,
+} from 'src/reducers/cart';
 
 interface CartContextProps {
   cart: Products,
@@ -11,6 +16,7 @@ interface CartContextProps {
   setIsCartOpen(v: boolean): void,
   setCartLoading(v: boolean): void,
   removeProductFromCart(v: number): void
+  deleteProductFromCart(v: number): void
 }
 
 export const CartContext = React.createContext({} as CartContextProps);
@@ -39,6 +45,12 @@ const CartProvider = ({
     }, 300);
   };
 
+  const deleteProductFromCart = (productId) => {
+    setTimeout(() => {
+      dispatch({ type: DELETE_PRODUCT, productId });
+    }, 300);
+  };
+
   const cart = cartState?.cart || [];
 
   const cartItemsCount = (cart || [])?.reduce((count, item) => count + (item?.quantity || 0), 0);
@@ -54,6 +66,7 @@ const CartProvider = ({
         setCartLoading,
         addProductToCart,
         removeProductFromCart,
+        deleteProductFromCart,
       }}
     >
       {children}
