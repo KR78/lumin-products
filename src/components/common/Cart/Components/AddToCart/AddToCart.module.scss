@@ -1,0 +1,13 @@
+@import "src/scss/styles.scss";
+
+.wrapper {
+  border: 1px solid $grey-nurse;
+  @extend %flex-row-justify-spaced-around;
+  @extend %align-items-center;
+  width: pxToRem(68px);
+  height: pxToRem(24px);
+
+  & > .cartCount {
+    font-size: pxToRem(14px);
+  }
+}

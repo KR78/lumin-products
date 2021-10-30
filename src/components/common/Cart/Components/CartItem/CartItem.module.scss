@@ -1,0 +1,48 @@
+@import "src/scss/styles.scss";
+
+.wrapper {
+  margin-top: pxToRem(38px);
+  padding: 0 pxToRem(30px);
+  @extend %flex-row;
+
+  & > .section {
+    padding: pxToRem(12px);
+    background: $white;
+    width: 100%;
+
+    & > header {
+      @extend %flex-row;
+
+      & > span {
+        @include font(13px, 300, $black);
+      }
+
+      & > .removeItemIcon {
+        margin-left: auto;
+      }
+    }
+
+    & > .productImage {
+      width: 100%;
+      @include padding-top-leftRight-bottom(8px, 8px, 0px);
+      @extend %flex-row;
+
+      & > img {
+        margin-left: auto;
+        max-width: pxToRem(60px);
+        height: auto
+      }
+    }
+
+    & > .bottomRow {
+      @extend %flex-row;
+      @extend %align-items-center;
+      width: pxToRem(302px);
+
+      & > .price {
+        @include font(16px, 300, $black);
+        margin-left: auto;
+      }
+    }
+  }
+}

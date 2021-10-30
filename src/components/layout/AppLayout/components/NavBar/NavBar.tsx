@@ -1,51 +1,67 @@
 import React from 'react';
 import Link from 'next/link';
-import { CartSVG } from 'src/components/common/SVG/CartSVG';
+import { Cart } from 'src/components/common/SVG/Cart';
 import Select from 'src/components/common/Select';
+import Button from 'src/components/common/Button';
 import siteLanguages from 'src/helpers/siteLanguages';
+import { useCartProvider } from 'src/components/providers/cartProvider';
 import {
   PATH_MAP,
   getPathList,
 } from 'src/helpers/paths';
 import style from './NavBar.module.scss';
 
-const NavBar = () => (
-  <nav className={style.wrapper} role="navigation" aria-label="main navigation">
-    <div>
-      <Link href="/">
-        <a>
-          <img src="/logo.png" alt="Lumin Logo" />
-        </a>
-      </Link>
-    </div>
-    <ul className={style.navLinks}>
-      {
-        getPathList().map((link) => (
-          <li
-            key={link.key}
-            className={style.linkItem}
-          >
-            {link.label}
-          </li>
-        ))
-      }
-    </ul>
-    <div className={style.topRightMenu}>
-      <Link href={PATH_MAP.account.href}>
-        <a className={style.accountLink}>{PATH_MAP.account.label}</a>
-      </Link>
-      <div className={style.cart}>
-        {
-          CartSVG({
-            size: 35,
-            className: style.cartIcon,
-          })
-        }
-        <span className={style.cartItemsCount}>1</span>
+const NavBar = () => {
+  const cartData = useCartProvider();
+
+  const {
+    isCartOpen,
+    setIsCartOpen,
+    cartItemsCount,
+  } = cartData;
+
+  return (
+    <nav className={style.wrapper} role="navigation" aria-label="main navigation">
+      <div>
+        <Link href="/">
+          <a>
+            <img src="/logo.png" alt="Lumin Logo" />
+          </a>
+        </Link>
       </div>
-      <Select options={siteLanguages} />
-    </div>
-  </nav>
-);
+      <ul className={style.navLinks}>
+        {
+          getPathList().map((link) => (
+            <li
+              key={link.key}
+              className={style.linkItem}
+            >
+              {link.label}
+            </li>
+          ))
+        }
+      </ul>
+      <div className={style.topRightMenu}>
+        <Link href={PATH_MAP.account.href}>
+          <a className={style.accountLink}>{PATH_MAP.account.label}</a>
+        </Link>
+        <div className={style.cart}>
+          <Button
+            onClick={() => setIsCartOpen(!isCartOpen)}
+          >
+            {
+              Cart({
+                size: 35,
+                className: style.cartIcon,
+              })
+            }
+          </Button>
+          <span className={style.cartItemsCount}>{cartItemsCount}</span>
+        </div>
+        <Select options={siteLanguages} />
+      </div>
+    </nav>
+  );
+};
 
 export default NavBar;

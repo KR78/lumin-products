@@ -1,0 +1,63 @@
+@import "src/scss/styles.scss";
+
+.wrapper {
+  & > .cart {
+    top: 0;
+    right: 0;
+    z-index: 3;
+    height: 100%;
+    position: fixed;
+    width: pxToRem(474px);
+    background-color: $cararra;
+    box-shadow: rgb(0 0 0 / 10%) pxToRem(0px) pxToRem(1px) pxToRem(3px) pxToRem(0px),
+      rgb(0 0 0 / 6%) pxToRem(0px) pxToRem(1px) pxToRem(2px) pxToRem(0px);
+
+    & > .header {
+      @include font(17px, 300, $black);
+      margin-bottom: pxToRem(17px);
+      @include padding-top-leftRight-bottom(21px, 167px, 0px);
+    }
+
+    & > .cartTopActions {
+      @extend %flex-row;
+      padding: 0 pxToRem(30px);
+
+      & > .currencySelect {
+        margin-left: auto;
+        border: none;
+      }
+    }
+
+    & > .emptyCartWrapper {
+      margin: pxToRem(149px);
+      @extend %flex-column;
+
+      & > section header {
+        @include font(13px, 300, $black);
+        @extend %flex-column-justify-center;
+
+        & > * {
+          margin: pxToRem(4px) 0;
+        }
+
+        & > button {
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+
+  @media only screen and (max-width: 529px) {
+    & > .cart {
+      width: 100%;
+    }
+  }
+}
+
+.hidden {
+  display: none;
+}
+
+.show {
+  @extend %flex-row;
+}
